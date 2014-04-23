@@ -7,12 +7,16 @@
 //
 
 #import "DFAppDelegate.h"
+#import "DFMainViewController.h"
 
 @implementation DFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    DFMainViewController *mainController = [[DFMainViewController alloc]init];
+    [self.window setRootViewController:mainController];
+    
     return YES;
 }
 							

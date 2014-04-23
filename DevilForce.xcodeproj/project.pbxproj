@@ -14,8 +14,6 @@
 		0CC3B97A19076DD2008ACF5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0CC3B97819076DD2008ACF5C /* InfoPlist.strings */; };
 		0CC3B97C19076DD2008ACF5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B97B19076DD2008ACF5C /* main.m */; };
 		0CC3B98019076DD2008ACF5C /* DFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B97F19076DD2008ACF5C /* DFAppDelegate.m */; };
-		0CC3B98319076DD2008ACF5C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC3B98119076DD2008ACF5C /* Main_iPhone.storyboard */; };
-		0CC3B98619076DD2008ACF5C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC3B98419076DD2008ACF5C /* Main_iPad.storyboard */; };
 		0CC3B98919076DD2008ACF5C /* DFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B98819076DD2008ACF5C /* DFViewController.m */; };
 		0CC3B98C19076DD2008ACF5C /* DFMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B98B19076DD2008ACF5C /* DFMyScene.m */; };
 		0CC3B98E19076DD2008ACF5C /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC3B98D19076DD2008ACF5C /* Spaceship.png */; };
@@ -25,6 +23,8 @@
 		0CC3B99919076DD2008ACF5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC3B97119076DD2008ACF5C /* UIKit.framework */; };
 		0CC3B9A119076DD2008ACF5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0CC3B99F19076DD2008ACF5C /* InfoPlist.strings */; };
 		0CC3B9A319076DD2008ACF5C /* DevilForceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B9A219076DD2008ACF5C /* DevilForceTests.m */; };
+		0CC3B9AE1907711E008ACF5C /* DFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */; };
+		0CC3B9B81907C264008ACF5C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC3B9B71907C264008ACF5C /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +49,6 @@
 		0CC3B97D19076DD2008ACF5C /* DevilForce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DevilForce-Prefix.pch"; sourceTree = "<group>"; };
 		0CC3B97E19076DD2008ACF5C /* DFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFAppDelegate.h; sourceTree = "<group>"; };
 		0CC3B97F19076DD2008ACF5C /* DFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFAppDelegate.m; sourceTree = "<group>"; };
-		0CC3B98219076DD2008ACF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		0CC3B98519076DD2008ACF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		0CC3B98719076DD2008ACF5C /* DFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFViewController.h; sourceTree = "<group>"; };
 		0CC3B98819076DD2008ACF5C /* DFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DFViewController.m; sourceTree = "<group>"; };
 		0CC3B98A19076DD2008ACF5C /* DFMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMyScene.h; sourceTree = "<group>"; };
@@ -62,6 +60,9 @@
 		0CC3B99E19076DD2008ACF5C /* DevilForceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DevilForceTests-Info.plist"; sourceTree = "<group>"; };
 		0CC3B9A019076DD2008ACF5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0CC3B9A219076DD2008ACF5C /* DevilForceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevilForceTests.m; sourceTree = "<group>"; };
+		0CC3B9AC1907711E008ACF5C /* DFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMainViewController.h; sourceTree = "<group>"; };
+		0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFMainViewController.m; sourceTree = "<group>"; };
+		0CC3B9B71907C264008ACF5C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC3B9B81907C264008ACF5C /* CoreMotion.framework in Frameworks */,
 				0CC3B97019076DD2008ACF5C /* CoreGraphics.framework in Frameworks */,
 				0CC3B97219076DD2008ACF5C /* UIKit.framework in Frameworks */,
 				0CC3B97419076DD2008ACF5C /* SpriteKit.framework in Frameworks */,
@@ -111,6 +113,7 @@
 		0CC3B96C19076DD2008ACF5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CC3B9B71907C264008ACF5C /* CoreMotion.framework */,
 				0CC3B96D19076DD2008ACF5C /* Foundation.framework */,
 				0CC3B96F19076DD2008ACF5C /* CoreGraphics.framework */,
 				0CC3B97119076DD2008ACF5C /* UIKit.framework */,
@@ -125,8 +128,8 @@
 			children = (
 				0CC3B97E19076DD2008ACF5C /* DFAppDelegate.h */,
 				0CC3B97F19076DD2008ACF5C /* DFAppDelegate.m */,
-				0CC3B98119076DD2008ACF5C /* Main_iPhone.storyboard */,
-				0CC3B98419076DD2008ACF5C /* Main_iPad.storyboard */,
+				0CC3B9AC1907711E008ACF5C /* DFMainViewController.h */,
+				0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */,
 				0CC3B98719076DD2008ACF5C /* DFViewController.h */,
 				0CC3B98819076DD2008ACF5C /* DFViewController.m */,
 				0CC3B98A19076DD2008ACF5C /* DFMyScene.h */,
@@ -246,8 +249,6 @@
 			files = (
 				0CC3B98E19076DD2008ACF5C /* Spaceship.png in Resources */,
 				0CC3B99019076DD2008ACF5C /* Images.xcassets in Resources */,
-				0CC3B98619076DD2008ACF5C /* Main_iPad.storyboard in Resources */,
-				0CC3B98319076DD2008ACF5C /* Main_iPhone.storyboard in Resources */,
 				0CC3B97A19076DD2008ACF5C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +270,7 @@
 			files = (
 				0CC3B98C19076DD2008ACF5C /* DFMyScene.m in Sources */,
 				0CC3B98019076DD2008ACF5C /* DFAppDelegate.m in Sources */,
+				0CC3B9AE1907711E008ACF5C /* DFMainViewController.m in Sources */,
 				0CC3B98919076DD2008ACF5C /* DFViewController.m in Sources */,
 				0CC3B97C19076DD2008ACF5C /* main.m in Sources */,
 			);
@@ -299,22 +301,6 @@
 				0CC3B97919076DD2008ACF5C /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		0CC3B98119076DD2008ACF5C /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0CC3B98219076DD2008ACF5C /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		0CC3B98419076DD2008ACF5C /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0CC3B98519076DD2008ACF5C /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		0CC3B99F19076DD2008ACF5C /* InfoPlist.strings */ = {
