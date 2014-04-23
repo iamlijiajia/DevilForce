@@ -9,7 +9,16 @@
 #import "DFMainViewController.h"
 #import <CoreMotion/CoreMotion.h>
 
+#define DFMotionMonitorInterval   0.01f
+
 @interface DFMainViewController ()
+{
+    double vx;  //X轴速度
+    double vy;  //Y轴速度
+    double vz;  //Z轴速度
+    
+    double v_real;
+}
 
 @property UILabel *maxSpeedLabel;
 @property UILabel *maxAddSpeedLabel;
@@ -63,6 +72,10 @@
     [self.startButton removeTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchDown];
     [self.startButton addTarget:self action:@selector(startButtonInit) forControlEvents:UIControlEventTouchDown];
     
+    double z = hypot(3, 4);
+    z = hypot(-3, 4);
+    z = hypot(-3, -4);
+    
     [self startMotionMonitor];
 }
 
@@ -75,15 +88,18 @@
 
 - (void)startMotionMonitor
 {
-    if (!self.motionManager.accelerometerAvailable) {
-        return;
-    }
-    
-    [self.motionManager startGyroUpdates];
-    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
-    {
-        
-    }];
+//    if (!self.motionManager.accelerometerAvailable) {
+//        return;
+//    }
+//    
+//    [self.motionManager setDeviceMotionUpdateInterval:DFMotionMonitorInterval];
+//    [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error)
+//     {
+//         vx += motion.userAcceleration.x * DFMotionMonitorInterval;
+//         vy += motion.userAcceleration.y * DFMotionMonitorInterval;
+//         vz += motion.userAcceleration.z * DFMotionMonitorInterval;
+//         v_real = hypot(vz, hypot(vx, vy));
+//    }];
 }
 
 - (void)stopMotionMonitor

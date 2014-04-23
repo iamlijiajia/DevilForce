@@ -24,7 +24,7 @@
 		0CC3B9A119076DD2008ACF5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0CC3B99F19076DD2008ACF5C /* InfoPlist.strings */; };
 		0CC3B9A319076DD2008ACF5C /* DevilForceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B9A219076DD2008ACF5C /* DevilForceTests.m */; };
 		0CC3B9AE1907711E008ACF5C /* DFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */; };
-		0CC3B9B81907C264008ACF5C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC3B9B71907C264008ACF5C /* CoreMotion.framework */; };
+		3A50EA1319080BD800018582 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A50EA1219080BD800018582 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		0CC3B9A219076DD2008ACF5C /* DevilForceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevilForceTests.m; sourceTree = "<group>"; };
 		0CC3B9AC1907711E008ACF5C /* DFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMainViewController.h; sourceTree = "<group>"; };
 		0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFMainViewController.m; sourceTree = "<group>"; };
-		0CC3B9B71907C264008ACF5C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		3A50EA1219080BD800018582 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CC3B9B81907C264008ACF5C /* CoreMotion.framework in Frameworks */,
+				3A50EA1319080BD800018582 /* CoreMotion.framework in Frameworks */,
 				0CC3B97019076DD2008ACF5C /* CoreGraphics.framework in Frameworks */,
 				0CC3B97219076DD2008ACF5C /* UIKit.framework in Frameworks */,
 				0CC3B97419076DD2008ACF5C /* SpriteKit.framework in Frameworks */,
@@ -113,7 +113,7 @@
 		0CC3B96C19076DD2008ACF5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0CC3B9B71907C264008ACF5C /* CoreMotion.framework */,
+				3A50EA1219080BD800018582 /* CoreMotion.framework */,
 				0CC3B96D19076DD2008ACF5C /* Foundation.framework */,
 				0CC3B96F19076DD2008ACF5C /* CoreGraphics.framework */,
 				0CC3B97119076DD2008ACF5C /* UIKit.framework */,
@@ -394,7 +394,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DevilForce/DevilForce-Prefix.pch";
 				INFOPLIST_FILE = "DevilForce/DevilForce-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -408,7 +410,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DevilForce/DevilForce-Prefix.pch";
 				INFOPLIST_FILE = "DevilForce/DevilForce-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -473,6 +477,7 @@
 				0CC3B9A819076DD2008ACF5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CC3B9A919076DD2008ACF5C /* Build configuration list for PBXNativeTarget "DevilForceTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +486,7 @@
 				0CC3B9AB19076DD2008ACF5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
