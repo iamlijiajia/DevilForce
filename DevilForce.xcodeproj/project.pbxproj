@@ -24,6 +24,7 @@
 		0CC3B9A319076DD2008ACF5C /* DevilForceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B9A219076DD2008ACF5C /* DevilForceTests.m */; };
 		0CC3B9AE1907711E008ACF5C /* DFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */; };
 		3A50EA1319080BD800018582 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A50EA1219080BD800018582 /* CoreMotion.framework */; };
+		3AF67ED119094A4D006CC492 /* CMDeviceMotion+TransformToReferenceFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF67ED019094A4D006CC492 /* CMDeviceMotion+TransformToReferenceFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		0CC3B9AC1907711E008ACF5C /* DFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFMainViewController.h; sourceTree = "<group>"; };
 		0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFMainViewController.m; sourceTree = "<group>"; };
 		3A50EA1219080BD800018582 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		3AF67ECF19094A4D006CC492 /* CMDeviceMotion+TransformToReferenceFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CMDeviceMotion+TransformToReferenceFrame.h"; sourceTree = "<group>"; };
+		3AF67ED019094A4D006CC492 /* CMDeviceMotion+TransformToReferenceFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CMDeviceMotion+TransformToReferenceFrame.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				0CC3B97F19076DD2008ACF5C /* DFAppDelegate.m */,
 				0CC3B9AC1907711E008ACF5C /* DFMainViewController.h */,
 				0CC3B9AD1907711E008ACF5C /* DFMainViewController.m */,
+				3AF67ECF19094A4D006CC492 /* CMDeviceMotion+TransformToReferenceFrame.h */,
+				3AF67ED019094A4D006CC492 /* CMDeviceMotion+TransformToReferenceFrame.m */,
 				0CC3B98A19076DD2008ACF5C /* DFMyScene.h */,
 				0CC3B98B19076DD2008ACF5C /* DFMyScene.m */,
 				0CC3B98D19076DD2008ACF5C /* Spaceship.png */,
@@ -264,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC3B98C19076DD2008ACF5C /* DFMyScene.m in Sources */,
+				3AF67ED119094A4D006CC492 /* CMDeviceMotion+TransformToReferenceFrame.m in Sources */,
 				0CC3B98019076DD2008ACF5C /* DFAppDelegate.m in Sources */,
 				0CC3B9AE1907711E008ACF5C /* DFMainViewController.m in Sources */,
 				0CC3B97C19076DD2008ACF5C /* main.m in Sources */,

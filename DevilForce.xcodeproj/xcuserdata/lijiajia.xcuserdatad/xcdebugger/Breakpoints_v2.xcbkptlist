@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DevilForce/DFMainViewController.m"
-            timestampString = "419957460.618773"
+            timestampString = "420042449.889731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-startButtonPressed:"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-initWithNibName:bundle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,28 +26,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DevilForce/DFMainViewController.m"
-            timestampString = "419958394.092117"
+            timestampString = "420042449.889731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-startMotionMonitor"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DevilForce/DFAppDelegate.m"
-            timestampString = "419958420.303561"
+            filePath = "DevilForce/CMDeviceMotion+TransformToReferenceFrame.m"
+            timestampString = "420039641.927186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-userAccelerationInReferenceFrame"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DevilForce/CMDeviceMotion+TransformToReferenceFrame.m"
+            timestampString = "420041402.475573"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-userAccelerationInReferenceFrame"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,9 +7,11 @@
 //
 
 #import "DFMainViewController.h"
+#import "CMDeviceMotion+TransformToReferenceFrame.h"
 #import <CoreMotion/CoreMotion.h>
 
 #define DFMotionMonitorInterval   0.1f
+#define DFGravityAcceleration       0.98f
 
 @interface DFMainViewController ()
 {
@@ -23,8 +25,6 @@
     
     int intervalTimes;  //获取数据次数
     
-    CMAttitude *refAttitude; //第一次获取的手机摆放方式，用来作参考坐标系
-    
     double ax;
     double ay;
     double az;
@@ -36,9 +36,10 @@
 @property UIButton *startButton;
 @property CMMotionManager *motionManager;
 
-@property UILabel *zuobiaoX;
-@property UILabel *zuobiaoY;
-@property UILabel *zuobiaoZ;
+@property UILabel *jiasuduX;
+@property UILabel *jiasuduY;
+@property UILabel *jiasuduZ;
+@property UILabel *gLabel;
 
 @end
 
@@ -60,40 +61,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.maxSpeedLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 30, 100, 30)];
+    self.maxSpeedLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 300, 30)];
     self.maxSpeedLabel.textColor = [UIColor whiteColor];
-    self.maxSpeedLabel.text = @"0.000";
+    self.maxSpeedLabel.text = @"maxSpeedLabel = 0.000";
     [self.view addSubview:self.maxSpeedLabel];
     
-    self.latestRealSpeedLabal = [[UILabel alloc]initWithFrame:CGRectMake(100, 80, 100, 30)];
+    self.latestRealSpeedLabal = [[UILabel alloc]initWithFrame:CGRectMake(10, 80, 300, 30)];
     self.latestRealSpeedLabal.textColor = [UIColor whiteColor];
-    self.latestRealSpeedLabal.text = @"0.000";
+    self.latestRealSpeedLabal.text = @"latestRealSpeedLabal = 0.000";
     [self.view addSubview:self.latestRealSpeedLabal];
     
-    self.moveDistance = [[UILabel alloc]initWithFrame:CGRectMake(100, 130, 100, 30)];
+    self.moveDistance = [[UILabel alloc]initWithFrame:CGRectMake(10, 130, 300, 30)];
     self.moveDistance.textColor = [UIColor whiteColor];
-    self.moveDistance.text = @"0.000";
+    self.moveDistance.text = @"moveDistance = 0.000";
     [self.view addSubview:self.moveDistance];
     
     
-    self.zuobiaoX = [[UILabel alloc]initWithFrame:CGRectMake(100, 180, 100, 20)];
-    self.zuobiaoX.textColor = [UIColor whiteColor];
-    self.zuobiaoX.text = @"x= 0";
-    [self.view addSubview:self.zuobiaoX];
+    self.jiasuduX = [[UILabel alloc]initWithFrame:CGRectMake(10, 180, 300, 20)];
+    self.jiasuduX.textColor = [UIColor whiteColor];
+    self.jiasuduX.text = @"ax= 0";
+    [self.view addSubview:self.jiasuduX];
     
-    self.zuobiaoY = [[UILabel alloc]initWithFrame:CGRectMake(100, 210, 100, 20)];
-    self.zuobiaoY.textColor = [UIColor whiteColor];
-    self.zuobiaoY.text = @"y= 0";
-    [self.view addSubview:self.zuobiaoY];
+    self.jiasuduY = [[UILabel alloc]initWithFrame:CGRectMake(10, 210, 300, 20)];
+    self.jiasuduY.textColor = [UIColor whiteColor];
+    self.jiasuduY.text = @"ay= 0";
+    [self.view addSubview:self.jiasuduY];
     
-    self.zuobiaoZ = [[UILabel alloc]initWithFrame:CGRectMake(100, 240, 100, 20)];
-    self.zuobiaoZ.textColor = [UIColor whiteColor];
-    self.zuobiaoZ.text = @"z= 0";
-    [self.view addSubview:self.zuobiaoZ];
+    self.jiasuduZ = [[UILabel alloc]initWithFrame:CGRectMake(10, 240, 300, 20)];
+    self.jiasuduZ.textColor = [UIColor whiteColor];
+    self.jiasuduZ.text = @"az= 0";
+    [self.view addSubview:self.jiasuduZ];
+    
+    self.gLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 270, 300, 20)];
+    self.gLabel.textColor = [UIColor whiteColor];
+    self.gLabel.text = @"g= 0";
+    [self.view addSubview:self.gLabel];
     
     
     self.startButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.startButton.frame = CGRectMake(100, 280, 100, 50);
+    self.startButton.frame = CGRectMake(100, 330, 100, 50);
     [self startButtonInit];
     [self.view addSubview:self.startButton];
 }
@@ -137,21 +143,18 @@
     [self.motionManager setDeviceMotionUpdateInterval:DFMotionMonitorInterval];
     [self.motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryCorrectedZVertical toQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error)
      {
-         double tempx = motion.userAcceleration.x;
+         CMAcceleration userAcceleration;
+         userAcceleration = [motion userAccelerationInReferenceFrame];
          
-         if (0 == intervalTimes) {
-             refAttitude = motion.attitude;
+         if (fabs(userAcceleration.x) > 0.01 ) {
+             vx += userAcceleration.x * DFGravityAcceleration * DFMotionMonitorInterval;
          }
-         else
-         {
-             [motion.attitude multiplyByInverseOfAttitude:refAttitude];
+         if (fabs(userAcceleration.y) > 0.01 ) {
+             vy += userAcceleration.y * DFGravityAcceleration * DFMotionMonitorInterval;
          }
-         
-         double tempx2 = motion.userAcceleration.x;
-         
-         vx += motion.userAcceleration.x * DFMotionMonitorInterval;
-         vy += motion.userAcceleration.y * DFMotionMonitorInterval;
-         vz += motion.userAcceleration.z * DFMotionMonitorInterval;
+         if (fabs(userAcceleration.z) > 0.01 ) {
+             vz += userAcceleration.z * DFGravityAcceleration * DFMotionMonitorInterval;
+         }
          v_real = hypot(vz, hypot(vx, vy));
          
          intervalTimes++;
@@ -160,19 +163,20 @@
              v_max =v_real;
          }
          
-         if (motion.userAcceleration.x > ax) {
-             ax = motion.userAcceleration.x;
-             weekSelf.zuobiaoX.text = [NSString stringWithFormat:@"x= %f", motion.userAcceleration.x];
+         if (fabs(userAcceleration.x) > ax) {
+             ax = userAcceleration.x;
+             weekSelf.jiasuduX.text = [NSString stringWithFormat:@"ax= %f", userAcceleration.x];
          }
-         if (motion.userAcceleration.y > ay) {
-             ay = motion.userAcceleration.y;
-             weekSelf.zuobiaoY.text = [NSString stringWithFormat:@"y= %f", motion.userAcceleration.y];
+         if (fabs(userAcceleration.y) > ay) {
+             ay = userAcceleration.y;
+             weekSelf.jiasuduY.text = [NSString stringWithFormat:@"ay= %f", userAcceleration.y];
          }
-         if (motion.userAcceleration.z > az) {
-             az = motion.userAcceleration.z;
-             weekSelf.zuobiaoZ.text = [NSString stringWithFormat:@"z= %f", motion.userAcceleration.z];
+         if (fabs(userAcceleration.z) > az) {
+             az = userAcceleration.z;
+             weekSelf.jiasuduZ.text = [NSString stringWithFormat:@"az= %f", userAcceleration.z];
          }
          
+         weekSelf.gLabel.text = [NSString stringWithFormat:@"g= %f", motion.gravity.z];
          
          [weekSelf resetLabel];
     }];
@@ -198,9 +202,9 @@
 
 - (void)resetLabel
 {
-    self.maxSpeedLabel.text = [NSString stringWithFormat:@"%f" , v_max];
-    self.latestRealSpeedLabal.text = [NSString stringWithFormat:@"%f" , v_real];
-    self.moveDistance.text = [NSString stringWithFormat:@"%f" , move_distance];
+    self.maxSpeedLabel.text = [NSString stringWithFormat:@"maxSpeedLabel = %f" , v_max];
+    self.latestRealSpeedLabal.text = [NSString stringWithFormat:@"latestRealSpeedLabal = %f" , v_real];
+    self.moveDistance.text = [NSString stringWithFormat:@"moveDistance = %f" , move_distance];
 }
 
 - (void)didReceiveMemoryWarning
