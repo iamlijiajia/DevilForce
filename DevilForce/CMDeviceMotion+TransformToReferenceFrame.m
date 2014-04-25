@@ -10,9 +10,11 @@
 
 @implementation CMDeviceMotion (TransformToReferenceFrame)
 
-- (CMAcceleration)userAccelerationInReferenceFrame
+- (CMAcceleration)userAccelerationInReferenceAttitude:(CMAttitude *)refAttitude
 {
     CMAcceleration acc = [self userAcceleration];
+    
+    [self.attitude multiplyByInverseOfAttitude:refAttitude];
     CMRotationMatrix rot = [self attitude].rotationMatrix;
     
     CMAcceleration accRef;

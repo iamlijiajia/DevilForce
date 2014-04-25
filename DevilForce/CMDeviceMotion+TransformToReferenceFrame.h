@@ -10,6 +10,6 @@
 
 @interface CMDeviceMotion (TransformToReferenceFrame)
 
--(CMAcceleration)userAccelerationInReferenceFrame;
+-(CMAcceleration)userAccelerationInReferenceAttitude:(CMAttitude*)refAttitude;
 
 @end

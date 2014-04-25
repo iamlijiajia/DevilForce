@@ -25,6 +25,10 @@
     
     int intervalTimes;  //获取数据次数
     
+    CMAttitude *refAttitude; //第一次获取的手机摆放方式，用来作参考坐标系
+    
+    NSTimer *timer;
+    
     double ax;
     double ay;
     double az;
@@ -111,6 +115,8 @@
     [self.startButton addTarget:self action:@selector(startButtonInit) forControlEvents:UIControlEventTouchDown];
     
     [self startMotionMonitor];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(startButtonInit) userInfo:nil repeats:NO];
 }
 
 - (void)startButtonInit
@@ -126,6 +132,11 @@
     else
     {
         [self stopMotionMonitor];
+    }
+    
+    if (timer && [timer isValid])
+    {
+        [timer invalidate];
     }
 }
 
@@ -143,16 +154,21 @@
     [self.motionManager setDeviceMotionUpdateInterval:DFMotionMonitorInterval];
     [self.motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryCorrectedZVertical toQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error)
      {
-         CMAcceleration userAcceleration;
-         userAcceleration = [motion userAccelerationInReferenceFrame];
+         if (0 == intervalTimes)
+         {
+             refAttitude = motion.attitude;
+         }
          
-         if (fabs(userAcceleration.x) > 0.01 ) {
+         CMAcceleration userAcceleration;
+         userAcceleration = [motion userAccelerationInReferenceAttitude:refAttitude];
+         
+         if (fabs(userAcceleration.x) > 0.02 ) {
              vx += userAcceleration.x * DFGravityAcceleration * DFMotionMonitorInterval;
          }
-         if (fabs(userAcceleration.y) > 0.01 ) {
+         if (fabs(userAcceleration.y) > 0.02 ) {
              vy += userAcceleration.y * DFGravityAcceleration * DFMotionMonitorInterval;
          }
-         if (fabs(userAcceleration.z) > 0.01 ) {
+         if (fabs(userAcceleration.z) > 0.02 ) {
              vz += userAcceleration.z * DFGravityAcceleration * DFMotionMonitorInterval;
          }
          v_real = hypot(vz, hypot(vx, vy));
@@ -163,17 +179,20 @@
              v_max =v_real;
          }
          
-         if (fabs(userAcceleration.x) > ax) {
+         if (fabs(userAcceleration.x) > ax)
+         {
              ax = userAcceleration.x;
-             weekSelf.jiasuduX.text = [NSString stringWithFormat:@"ax= %f", userAcceleration.x];
+             weekSelf.jiasuduX.text = [NSString stringWithFormat:@"ax= %f", ax];
          }
-         if (fabs(userAcceleration.y) > ay) {
+         if (fabs(userAcceleration.y) > ay)
+         {
              ay = userAcceleration.y;
-             weekSelf.jiasuduY.text = [NSString stringWithFormat:@"ay= %f", userAcceleration.y];
+             weekSelf.jiasuduY.text = [NSString stringWithFormat:@"ay= %f", ay];
          }
-         if (fabs(userAcceleration.z) > az) {
+         if (fabs(userAcceleration.z) > az)
+         {
              az = userAcceleration.z;
-             weekSelf.jiasuduZ.text = [NSString stringWithFormat:@"az= %f", userAcceleration.z];
+             weekSelf.jiasuduZ.text = [NSString stringWithFormat:@"az= %f", az];
          }
          
          weekSelf.gLabel.text = [NSString stringWithFormat:@"g= %f", motion.gravity.z];
